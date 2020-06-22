@@ -3,7 +3,7 @@ var pos, pointSize;
 var clear, slider, color_picker, bg_picker;
 var slider_value, slider_value_min, slider_value_max;
 var cp_text, bg_text;
-var bg_color;
+var bg_color = "#ffffff";
 
 function setup(){
     canvas = createCanvas(1600,800);
