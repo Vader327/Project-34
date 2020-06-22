@@ -1,4 +1,4 @@
-var database, db_background;
+var canvas, database, db_background;
 var pos, pointSize;
 var clear, slider, color_picker, bg_picker;
 var slider_value, slider_value_min, slider_value_max;
@@ -6,7 +6,8 @@ var cp_text, bg_text;
 var bg_color;
 
 function setup(){
-    createCanvas(1600,800);
+    canvas = createCanvas(1600,800);
+    canvas.position(displayWidth/2 - 500,0);
     database = firebase.database().ref("Point/position");
     database.on("value",readPosition);
 
@@ -15,7 +16,7 @@ function setup(){
 
     clear = createButton("Clear Canvas");
     clear.elt.id = "clear_button";
-    clear.position(900, 850);
+    clear.position(canvas.x + 700, 850);
 
     slider = createSlider(5, 51, 5, 2);
     slider.elt.id = "slider";
