@@ -2,7 +2,7 @@ var canvas, database, db_background;
 var pos, pointSize;
 var clear, slider, color_picker, bg_picker;
 var slider_value, slider_value_min, slider_value_max;
-var cp_text, bg_text;
+var cp_text, bg_text, change_bg;
 var bg_color = "#ffffff";
 
 function setup(){
@@ -51,6 +51,15 @@ function setup(){
     bg_text.elt.id = "values";
     bg_text.position(bg_picker.x - 230 ,bg_picker.y - 20);
     bg_text.html("Background Color:");
+
+    change_bg = createButton("Change Backgrond");
+    change_bg.elt.id = "change_backround";
+    change_bg.position(bg_picker.x - 200, bg_picker.y + 50);
+}
+
+function readBackground(data){
+    background(data.val());
+    bg_color = data.val();
 }
 
 function draw(){
@@ -62,7 +71,9 @@ function draw(){
         clearCanvas();
     })
 
-    db_background.set(bg_picker.value());
+    change_bg.mousePressed(()=>{
+        db_background.set(bg_picker.value());
+    })
 }
 
 function mouseDragged(){
@@ -73,11 +84,6 @@ function mouseDragged(){
     strokeWeight(pointSize);
     point(mouseX, mouseY);
     writePosition(mouseX, mouseY, pointSize, color_picker.value());
-}
-
-function readBackground(data){
-    background(data.val());
-    bg_color = data.val();
 }
 
 function readPosition(data){
