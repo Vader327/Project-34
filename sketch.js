@@ -8,7 +8,7 @@ var bg_color = "#ffffff";
 function setup(){
     canvas = createCanvas(1600,800);
     canvas.position(displayWidth/2 - 500,0);
-    database = firebase.database().ref("Point/position");
+    database = firebase.database().ref("Point");
     database.on("value",readPosition);
 
     db_background = firebase.database().ref("Background");
